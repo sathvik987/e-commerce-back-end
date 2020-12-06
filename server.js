@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const users = require('./routes/users')
+const products = require('./routes/products')
 
 const url = 'mongodb://localhost/e-commerce'
 
@@ -13,7 +14,9 @@ con.on('open', () => {
 })
 
 app.use(express.json())
+app.use('/uploads', express.static("uploads"))
 app.use('/users', users)
+app.use('/products', products)
 
 app.listen(9000, () => {
     console.log('server started')
