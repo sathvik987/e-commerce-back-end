@@ -5,10 +5,10 @@ const orders = require('../models/order_model')
 
 router.post('/neworder', (req, res) => {
 
-    const { username, email, address, productname, quantity, status, date } = req.body
+    const { username, email, address, productname, quantity, status, date, price } = req.body
 
     const order = new orders({
-        username, email, address, productname, quantity, status, date
+        username, email, address, productname, quantity, status, date, price
     })
 
     order.save()

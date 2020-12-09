@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors');
 const users = require('./routes/users')
 const products = require('./routes/products')
 const orders = require('./routes/orders')
@@ -15,6 +16,7 @@ con.on('open', () => {
 })
 
 app.use(express.json())
+app.use(cors());
 app.use('/uploads', express.static("uploads"))
 app.use('/users', users)
 app.use('/products', products)
