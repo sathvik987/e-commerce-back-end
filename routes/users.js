@@ -19,6 +19,8 @@ router.post('/register', (req, res) => {
 
     user.save()
         .then(savedUser => {
+            savedUser = savedUser.toObject()
+            delete savedUser.password;
             res.json(savedUser)
         })
         .catch(err => {
@@ -37,6 +39,8 @@ router.post('/signin', (req, res) => {
         .then(user => {
             const isValid = bcrypt.compareSync(password, user.password)
             if (isValid) {
+                user = user.toObject()
+                delete user.password;
                 res.json(user)
             } else {
                 res.status(400).json('worng credentials')
