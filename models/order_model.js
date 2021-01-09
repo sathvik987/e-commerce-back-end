@@ -13,14 +13,9 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    productname: {
+    productnames: {
         type: String,
         required: true
-    },
-    quantity: {
-        type: Number,
-        required: true,
-        default: 1
     },
     price: {
         type: Number,
@@ -29,7 +24,7 @@ const orderSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true,
-        default: 'order received'
+        default: 'Order received'
     },
     date: {
         type: Date,

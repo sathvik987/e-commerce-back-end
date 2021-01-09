@@ -6,17 +6,17 @@ const Stripe = require('stripe')
 const stripe = new Stripe('sk_test_4YGOGclLFuIAIvc2obGqdj0Y00KKTEwBSX')
 
 
-router.post('/neworder', (req, res) => {
+router.put('/neworder', (req, res) => {
 
-    const { username, email, address, productname, quantity, status, date, price } = req.body
+    const { username, email, address, productnames, price } = req.body
 
     const order = new orders({
-        username, email, address, productname, quantity, status, date, price
+        username, email, address, productnames, price
     })
 
     order.save()
         .then(savedOrder => {
-            res.json(savedOrder)
+            res.json('saved')
         })
         .catch(err => {
             res.json("error" + err)
@@ -25,7 +25,7 @@ router.post('/neworder', (req, res) => {
 })
 
 router.post('/payment', async (req, res) => {
-    const { amount, email } = req.body
+    const { amount } = req.body
 
     try {
         const paymentIntent = await stripe.paymentIntents.create({
@@ -40,11 +40,27 @@ router.post('/payment', async (req, res) => {
 })
 
 
-router.get('/allorders', (req, res) => {
+router.post('/allorders', (req, res) => {
 
-    orders.find()
+    const { email } = req.body
+
+    orders.find({ email: email })
         .then(allOrder => {
             res.json(allOrder)
+        })
+        .catch(err => {
+            res.json("error" + err)
+        })
+
+})
+
+router.put('/cancelOrder', (req, res) => {
+
+    const { status, date } = req.body
+
+    orders.updateOne({ date: date }, { status: status })
+        .then(allOrder => {
+            res.json('updated')
         })
         .catch(err => {
             res.json("error" + err)
