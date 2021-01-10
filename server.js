@@ -4,6 +4,7 @@ const cors = require('cors');
 const users = require('./routes/users')
 const products = require('./routes/products')
 const orders = require('./routes/orders')
+const contacts = require('./routes/contacts')
 
 const url = 'mongodb://localhost/e-commerce'
 
@@ -21,6 +22,7 @@ app.use('/uploads', express.static("uploads"))
 app.use('/users', users)
 app.use('/products', products)
 app.use('/orders', orders)
+app.use('/contacts', contacts)
 
 app.listen(9000, () => {
     console.log('server started')
