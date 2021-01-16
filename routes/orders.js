@@ -56,9 +56,9 @@ router.post('/allorders', (req, res) => {
 
 router.put('/cancelOrder', (req, res) => {
 
-    const { status, date } = req.body
+    const { status, date, email } = req.body
 
-    orders.updateOne({ date: date }, { status: status })
+    orders.updateOne({ date: date, email: email }, { status: status })
         .then(allOrder => {
             res.json('updated')
         })
