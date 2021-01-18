@@ -54,12 +54,24 @@ router.post('/allorders', (req, res) => {
 
 })
 
-router.put('/cancelOrder', (req, res) => {
+router.get('/orders', (req, res) => {
+
+    orders.find()
+        .then(allOrder => {
+            res.json(allOrder)
+        })
+        .catch(err => {
+            res.json("error" + err)
+        })
+
+})
+
+router.put('/orderstatus', (req, res) => {
 
     const { status, date, email } = req.body
 
     orders.updateOne({ date: date, email: email }, { status: status })
-        .then(allOrder => {
+        .then(order => {
             res.json('updated')
         })
         .catch(err => {

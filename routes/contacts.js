@@ -22,6 +22,32 @@ router.put('/addmessage', (req, res) => {
 
 })
 
+router.get('/messages', (req, res) => {
+
+    contact.find()
+        .then(all => {
+            res.json(all)
+        })
+        .catch(err => {
+            res.json("error" + err)
+        })
+})
+
+
+router.put('/messagestatus', (req, res) => {
+
+    const { status, date, email } = req.body
+
+    contact.updateOne({ date: date, email: email }, { status: status })
+        .then(msg => {
+            res.json('updated')
+        })
+        .catch(err => {
+            res.json("error" + err)
+        })
+
+})
+
 
 
 module.exports = router

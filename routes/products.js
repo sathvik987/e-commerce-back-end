@@ -54,4 +54,19 @@ router.get('/getproducts', (req, res) => {
 
 })
 
+
+router.post('/deleteproduct', (req, res) => {
+
+    const { productname } = req.body;
+
+    products.findOneAndDelete({ productname: productname })
+        .then(prds => {
+            res.json("Done")
+        })
+        .catch(err => {
+            res.json("err" + err)
+        })
+
+})
+
 module.exports = router
