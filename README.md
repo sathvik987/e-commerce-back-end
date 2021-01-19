@@ -1,4 +1,4 @@
-# E-commerce-back-end
+# E-commerce back-end
 
 - Live URL - https://sathvik987.github.io/e-commerce/
 - Front-end - https://github.com/sathvik987/e-commerce
