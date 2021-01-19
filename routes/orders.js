@@ -4,7 +4,9 @@ const orders = require('../models/order_model')
 const Stripe = require('stripe')
 
 
-const stripe = new Stripe('YOUR_STRIPE_KEY')
+let stripeKey = process.env.stripeKey
+
+const stripe = new Stripe(stripeKey)
 
 
 router.put('/neworder', (req, res) => {
