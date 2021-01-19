@@ -3,9 +3,8 @@ const router = express.Router()
 const orders = require('../models/order_model')
 const Stripe = require('stripe')
 
-let stripeKey = process.env.stripeKey
 
-const stripe = new Stripe(stripeKey)
+const stripe = new Stripe('YOUR_STRIPE_KEY')
 
 
 router.put('/neworder', (req, res) => {
