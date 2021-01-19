@@ -6,7 +6,7 @@ const products = require('./routes/products')
 const orders = require('./routes/orders')
 const contacts = require('./routes/contacts')
 
-const url = 'mongodb://localhost/e-commerce'
+const url = 'mongodb+srv://sathvik:fh3fvYtA$7QeCe@freecluster.g15fs.mongodb.net/e-commerce'
 
 const app = express()
 
