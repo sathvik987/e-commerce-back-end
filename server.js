@@ -7,7 +7,7 @@ const orders = require('./routes/orders')
 const contacts = require('./routes/contacts')
 
 
-let mongodbURL = process.env.mongodbURL
+let mongodbURL = process.env.mongodbURL || 'mongodb://localhost/e-commerce';
 
 const url = mongodbURL
 
