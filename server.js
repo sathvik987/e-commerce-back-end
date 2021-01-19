@@ -7,9 +7,9 @@ const orders = require('./routes/orders')
 const contacts = require('./routes/contacts')
 
 
-let mongodbPassword = process.env.mongodb
+let mongodbURL = process.env.mongodbURL
 
-const url = `mongodb+srv://sathvik:${mongodbPassword}@freecluster.g15fs.mongodb.net/e-commerce`
+const url = mongodbURL
 
 const app = express()
 
