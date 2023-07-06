@@ -6,7 +6,12 @@
 .pnp.js
 .eslintcache
 .env
-/uploads
+
+# exclude everything
+uploads/*
+
+# exception to the rule
+!uploads/.gitkeep 
 
 
 # testing
