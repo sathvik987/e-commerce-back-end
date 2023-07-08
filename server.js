@@ -18,6 +18,9 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useCrea
 const con = mongoose.connection
 con.on('open', () => {
     console.log('connected to db')
+    app.listen(process.env.PORT || 9000, () => {
+        console.log('server started')
+    })
 })
 
 app.use(express.json())
@@ -27,7 +30,3 @@ app.use('/users', users)
 app.use('/products', products)
 app.use('/orders', orders)
 app.use('/contacts', contacts)
-
-app.listen(process.env.PORT || 9000, () => {
-    console.log('server started')
-})
